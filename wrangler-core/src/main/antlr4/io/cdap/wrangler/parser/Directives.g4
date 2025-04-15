@@ -139,14 +139,16 @@ numberRange
  : Number ':' Number '=' value
  ;
 
-value
-  : STRING
-  | INT
-  | FLOAT
-  | BOOLEAN
-  | BYTE_SIZE
-  | TIME_DURATION
-  ;
+value: 
+    // existing rules...
+    | BYTE_SIZE #byteSizeArg
+    | TIME_DURATION #timeDurationArg
+    // ...
+;
+
+// Add these if needed for specific directives
+byteSizeArg: BYTE_SIZE;
+timeDurationArg: TIME_DURATION;
 
 
 ecommand
