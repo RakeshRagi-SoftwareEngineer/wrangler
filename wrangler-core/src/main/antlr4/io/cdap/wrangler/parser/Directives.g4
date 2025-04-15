@@ -317,25 +317,10 @@ fragment Int
 fragment Digit
  : [0-9]
  ;
-BYTE_SIZE
-  : INT? FLOAT? BYTE_UNIT
-  ;
 
-TIME_DURATION
-  : INT? FLOAT? TIME_UNIT
-  ;
+fragment BYTE_UNIT: ('B'|'b'|'KB'|'kb'|'MB'|'mb'|'GB'|'gb'|'TB'|'tb');
+fragment TIME_UNIT: ('ns'|'us'|'ms'|'s'|'sec'|'second'|'seconds'|'m'|'min'|'minute'|'minutes'|'h'|'hour'|'hours'|'d'|'day'|'days');
 
-fragment BYTE_UNIT
-  : [Kk][Bb]
-  | [Mm][Bb]
-  | [Gg][Bb]
-  | [Tt][Bb]
-  ;
-
-fragment TIME_UNIT
-  : [Mm][Ss]
-  | [Ss]
-  | [Mm][Ii][Nn]
-  | [Hh][Rr]      
-  ;
+BYTE_SIZE: NUMBER WS? BYTE_UNIT;
+TIME_DURATION: NUMBER WS? TIME_UNIT;
   
